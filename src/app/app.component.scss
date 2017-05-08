@@ -1,0 +1,323 @@
+/* Header style */
+header{
+  margin: 0;
+
+  > div {
+    border: none;
+    border-radius: 0;
+    background-color: #1C3742;
+
+    ul li {
+      padding: 15px 10px 15px 0;
+    }
+  }
+
+  a {
+    height: 60px;
+    padding-top: 20px;
+    color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  button {
+    background-color: #1D8DE8;
+    color: white;
+    padding: 6px 12px;
+    margin: auto 2px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+/* Style for filter section */
+section {
+  display: block;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 50px;
+  margin: 20px auto;
+
+  .filter, .sub-filter {
+    background: #e1e1e1;
+    color: #757575;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    border-radius: 5px;
+
+    .filter-button > a {
+      color: #757575;
+      font-size: 18px;
+      padding: 20px 15px;
+      float: left;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: #41bb19;
+        cursor: pointer;
+        text-decoration: none;
+        border-bottom: 2px solid #41bb19;
+      }
+    }
+
+    > div > form .form-control {
+      margin: 18px 0 15px;
+    }
+
+    div > .btn-group {
+      width: 100%;
+
+      .btn-filter {
+        color: #757575;
+        font-size: 18px;
+        padding: 20px 10px;
+        float: right;
+
+        &:hover,
+        &:focus,
+        &.active {
+          text-decoration: none;
+          cursor: pointer;
+          border-bottom: 2px solid;
+          color: #41bb19;
+        }
+
+        i {
+          margin-right: 5px;
+        }
+      }
+
+      .dropdown-toggle {
+        border: none;
+      }
+    }
+
+    /*.filter .dropdown-menu {
+      right: 0;
+    }*/
+  }
+
+  /* Styles for subfilter elements */
+  .sub-filter {
+    height: 0;
+    margin: 30px 0 5px;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+      opacity: 1;
+      height: auto;
+    }
+
+    ul li {
+      list-style: none;
+
+      a {
+        background: #f6f6f6;
+        text-decoration: none;
+        cursor: pointer;
+        color: #757575;
+        border-radius: 5px;
+        border: 2px solid #41bb19;
+        padding: 5px 15px;
+        margin: 10px;
+        float: left;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+
+        &.active {
+          color: #fff;
+          text-decoration: none;
+          background: #41bb19;
+
+          i {
+            display: inline;
+          }
+        }
+
+        i {
+          color: #fff;
+          margin-left: 10px;
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+.closeModal {
+  opacity: 0.5;
+  background-color: red;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+
+    /* Center the image and position the close button */
+    .img-container {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+
+      img.avatar {
+        width: 40%;
+        border-radius: 50%;
+      }
+    }
+
+    /* Form container style */
+    .form-container {
+      padding: 16px;
+
+      /* Form input style */
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      /* Form button style */
+      button {
+        background-color: #1D8DE8;
+        color: white;
+        padding: 6px 12px;
+        margin: auto 2px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+
+    /* Extra style for cancel button container */
+    .cancel-btn-container {
+      padding: 16px;
+
+      /* Extra styles for the cancel button */
+      .cancel-btn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+      }
+    }
+  }
+}
+
+/* Add ZoomIn Animation */
+.animate-zoom-in {
+  -webkit-animation: animate-zoom-in 0.6s;
+  animation: animate-zoom-in 0.6s
+}
+
+/* Add ZoomOut Animation */
+.animate-zoom-out {
+  -webkit-animation: animate-zoom-out 0.3s;
+  animation: animate-zoom-out 0.3s
+}
+
+.glyphicon-refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+}
+
+/* Keyframes */
+@-webkit-keyframes animate-zoom-in {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animate-zoom-in {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+@-webkit-keyframes animate-zoom-out {
+  from {-webkit-transform: scale(1)}
+  to {-webkit-transform: scale(0)}
+}
+
+@keyframes animate-zoom-out {
+  from {transform: scale(1)}
+  to {transform: scale(0)}
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
+/* @media */
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+  .cancel-btn {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 40%
+  }
+}

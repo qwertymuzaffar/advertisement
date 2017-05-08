@@ -1,0 +1,116 @@
+<header *ngIf="!isLogged()">
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand"><i class="glyphicon glyphicon-shopping-cart"></i> Advertisement</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="!isLogged()"><button name="signin" class="btn" (click)="openForm('signInContainer')"><i class="glyphicon glyphicon-user"></i> Sign in</button></li>
+        <li *ngIf="!isLogged()"><button name="signup" class="btn" (click)="openForm('signUpContainer')"><i class="glyphicon glyphicon-user"></i> Sign up</button></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section class="col-xs-12 col-lg-12 pull-left">
+  <div class="filter">
+    <div class="col-xs-12 col-sm-12 col-md-3 pull-left filter-button">
+      <a (click)="subFilterActive()">Filter Categories</a>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3">
+      <form>
+        <input type="text" name="search" class="form-control" placeholder="Search">
+      </form>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 pull-right">
+      <div class="btn-group">
+        <button class="btn-filter dropdown-toggle"><i class="glyphicon glyphicon-sort"></i> Sort <span class="caret"></span></button>
+        <a href="#" (click)="onViewModeChange('gridView')" [ngClass]="{'active': gridViewMode}" class="btn-filter"><i class="glyphicon glyphicon-th"></i> Grid</a>
+        <a href="#" (click)="onViewModeChange('listView')" [ngClass]="{'active': listViewMode}" class="btn-filter"><i class="glyphicon glyphicon-list"></i> List</a>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'active': subFilter}" class="sub-filter">
+    <ul>
+      <li><a href="#" (click)="subFilterButton = !subFilterButton" [ngClass]="{'active': subFilterButton}">abc<i class="glyphicon glyphicon-remove"></i></a></li>
+      <li><a href="#" (click)="subFilterButton = !subFilterButton" [ngClass]="{'active': subFilterButton}">456<i class="glyphicon glyphicon-remove"></i></a></li>
+    </ul>
+  </div>
+</section>
+
+<div class="closeModal" (click)="closeForm('signInContainer')"></div>
+
+<!-- The Sign in Modal -->
+<div #signInContainer class="modal">
+  <span (click)="closeForm('signInContainer')"
+        class="close" title="Close SignIn">&times;</span>
+
+  <!-- Modal Content -->
+  <form method="post" class="modal-content animate-zoom-in" (ngSubmit)="signinForm.form.valid && signIn()" #signinForm="ngForm" novalidate>
+    <div class="img-container">
+      <img src="../../uploads/avatar-male.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="form-container">
+      <div class="form-group" [ngClass]="{ 'has error': signinForm.submitted && !email.valid }">
+        <label for="signInEmail"><b>Email</b></label>
+        <input id="signInEmail" type="text" placeholder="Enter Email" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+        <div *ngIf="signinForm.submitted && !email.valid" class="help-block">Username is required</div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has error': signinForm.submitted && !password.valid }">
+        <label for="signInPassword"><b>Password</b></label>
+        <input id="signInPassword" type="password" placeholder="Enter Password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+        <div *ngIf="signinForm.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+
+      <button type="submit">Sign in</button>
+      <input type="checkbox" id="checkbox"> <label for="checkbox">Remember me</label>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    </div>
+
+    <div class="cancel-btn-container" [ngStyle]="{'background-color': '#f1f1f1'}">
+      <button type="button" title="Close SignIn" (click)="closeForm('signInContainer')" class="cancel-btn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<!-- The Sign up Modal -->
+<div #signUpContainer class="modal">
+  <span (click)="closeForm('signUpContainer')"
+        class="close" title="Close SignUp">&times;</span>
+
+  <!-- Modal Content -->
+  <form method="post" class="modal-content animate-zoom-in" (ngSubmit)="signupForm.form.valid && signUp()" #signupForm="ngForm" novalidate>
+    <div class="form-container">
+      <div class="form-group" [ngClass]="{ 'has error': signupForm.submitted && !name.valid }">
+        <label for="signUpName"><b>Name</b></label>
+        <input id="signUpName" type="text" placeholder="Enter name" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+        <div *ngIf="signupForm.submitted && !name.valid" class="help-block">Name is required</div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has error': signupForm.submitted && !email.valid }">
+        <label for="signUpEmail"><b>Email</b></label>
+        <input id="signUpEmail" type="text" placeholder="Enter email" name="email" [(ngModel)]="model.email" #email="ngModel" required>
+        <div *ngIf="signupForm.submitted && !email.valid" class="help-block">Email is required</div>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+      </div>
+
+      <div class="form-group" [ngClass]="{ 'has error': signupForm.submitted && !password.valid }">
+        <label for="signUpPassword"><b>Password</b></label>
+        <input id="signUpPassword" type="password" placeholder="Enter Password" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+        <div *ngIf="signupForm.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+
+      <button type="submit">Sign up</button>
+      <!--<input type="checkbox" id="checkbox"> <label for="checkbox">Remember me</label>-->
+    </div>
+
+    <div class="cancel-btn-container" [ngStyle]="{'background-color': '#f1f1f1'}">
+      <button type="button" title="Close SignUp" (click)="closeForm('signUpContainer')" class="cancel-btn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
