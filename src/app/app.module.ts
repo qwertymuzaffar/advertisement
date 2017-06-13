@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutes } from '../route/app.routes';
+import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from '../user/user.component';
@@ -22,7 +24,9 @@ import { AuthGuard } from '../guards/auth.guard';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutes
+    AppRoutes,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AdvertService,
